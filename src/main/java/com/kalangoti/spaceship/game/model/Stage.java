@@ -10,11 +10,11 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class Stage extends JPanel implements ActionListener {
     private final transient Image gameBackground;
     private final transient Player player;
-    private final Timer timer;
 
     public Stage() {
         setFocusable(true);
@@ -28,7 +28,7 @@ public class Stage extends JPanel implements ActionListener {
 
         addKeyListener(new KeyboardAdapter(player));
 
-        timer = new Timer(5, this);
+        Timer timer = new Timer(5, this);
         timer.start();
     }
 
@@ -36,17 +36,35 @@ public class Stage extends JPanel implements ActionListener {
     public void paint(Graphics graph) {
         Graphics2D graph2D = (Graphics2D) graph;
         graph2D.drawImage(gameBackground, 0, 0, null);
-        graph2D.drawImage(player.getSpaceshipImage(), player.getX(), player.getY(), this);
-        graph2D.dispose();
-    }
 
-    public Image getGameBackground() {
-        return this.gameBackground;
+        graph2D.drawImage(player.getSpaceshipImage(), player.getX(), player.getY(), this);
+
+        List<Shot> shots = player.getShots();
+        for (Shot shot : shots) {
+            graph2D.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
+        }
+
+        graph2D.dispose();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         player.update();
+
+        List<Shot> shots = player.getShots();
+        for (int i = 0; i < shots.size(); i++) {
+            Shot shot = shots.get(i);
+            if (shot.isVisible()) {
+                shot.update();
+            } else {
+                shots.remove(shot);
+            }
+        }
+
         repaint();
+    }
+
+    public Image getGameBackground() {
+        return this.gameBackground;
     }
 }
