@@ -30,12 +30,12 @@ public class Shot {
         width = image.getWidth(null);
         height = image.getHeight(null);
 
-        maxWidth = Container.WIDTH - width;
+        maxWidth = Container.WIDTH - (width * 2);
     }
 
     public void update() {
         this.x += speed;
-        if (this.x > maxWidth) {
+        if (this.x >= maxWidth) {
             setVisible(false);
         }
     }

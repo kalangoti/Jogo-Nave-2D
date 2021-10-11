@@ -16,14 +16,17 @@ public class Player {
     private int height;
     private int width;
     private final List<Shot> shots;
+    private static final int SPEED = 3;
 
     public Player() {
         this.x = 100;
         this.y = 100;
         shots = new ArrayList<>();
+
+        load();
     }
 
-    public void load() {
+    private void load() {
         ImageIcon reference = new ImageIcon("src\\main\\resources\\img\\spaceship.png");
         spaceshipImage = reference.getImage();
 
@@ -67,19 +70,19 @@ public class Player {
         }
 
         if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_W) {
-            axisY = -3;
+            axisY = -SPEED;
         }
 
         if (keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_S) {
-            axisY = 3;
+            axisY = SPEED;
         }
 
         if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_A) {
-            axisX = -3;
+            axisX = -SPEED;
         }
 
         if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_D) {
-            axisX = 3;
+            axisX = SPEED;
         }
     }
 
@@ -113,5 +116,17 @@ public class Player {
 
     public List<Shot> getShots() {
         return shots;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getSpeed() {
+        return SPEED;
     }
 }

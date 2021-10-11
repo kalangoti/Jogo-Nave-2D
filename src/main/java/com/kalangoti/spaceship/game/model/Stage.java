@@ -24,7 +24,6 @@ public class Stage extends JPanel implements ActionListener {
         gameBackground = reference.getImage();
 
         player = new Player();
-        player.load();
 
         addKeyListener(new KeyboardAdapter(player));
 
@@ -39,8 +38,7 @@ public class Stage extends JPanel implements ActionListener {
 
         graph2D.drawImage(player.getSpaceshipImage(), player.getX(), player.getY(), this);
 
-        List<Shot> shots = player.getShots();
-        for (Shot shot : shots) {
+        for (Shot shot : player.getShots()) {
             graph2D.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
         }
 
@@ -48,7 +46,7 @@ public class Stage extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent event) {
         player.update();
 
         List<Shot> shots = player.getShots();
@@ -64,7 +62,7 @@ public class Stage extends JPanel implements ActionListener {
         repaint();
     }
 
-    public Image getGameBackground() {
+    protected Image getGameBackground() {
         return this.gameBackground;
     }
 }
