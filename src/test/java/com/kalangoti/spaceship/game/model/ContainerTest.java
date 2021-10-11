@@ -1,6 +1,5 @@
-package com.kalangoti.spaceship.game;
+package com.kalangoti.spaceship.game.model;
 
-import com.kalangoti.spaceship.game.model.Container;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

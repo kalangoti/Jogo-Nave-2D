@@ -16,7 +16,7 @@ class StageTest {
     @Test
     @DisplayName("It should return the game background image")
     void testWithGameBackground() {
-        assertEquals(stage.getGameBackground(), reference.getImage());
+        assertEquals(reference.getImage(), stage.getGameBackground());
     }
 
     @Test
@@ -24,6 +24,6 @@ class StageTest {
     void testWithoutGameBackground() {
         ImageIcon newReference = new ImageIcon("resources\\img\\black-background.jpg");
 
-        assertNotEquals(stage.getGameBackground(), newReference.getImage());
+        assertNotEquals(newReference.getImage(), stage.getGameBackground());
     }
 }
