@@ -15,13 +15,16 @@ public class Player {
     private Image spaceshipImage;
     private int height;
     private int width;
-    private final List<Shot> shots;
+    private final List<Gunshot> gunshots;
+    private boolean visible;
+
     private static final int SPEED = 3;
 
     public Player() {
         this.x = 100;
         this.y = 100;
-        shots = new ArrayList<>();
+        this.visible =true;
+        this.gunshots = new ArrayList<>();
 
         load();
     }
@@ -43,20 +46,20 @@ public class Player {
         return new Rectangle(x, y, width, height);
     }
 
-    public void simpleShot() {
-        Shot newShot = new Shot(x + width, y + (height / 2));
-        if (!checkCollisions(newShot)) {
-            this.shots.add(newShot);
+    private void simpleGunshot() {
+        Gunshot newGunshot = new Gunshot(x + width, y + (height / 2));
+        if (!checkCollisions(newGunshot)) {
+            this.gunshots.add(newGunshot);
         }
     }
 
-    public boolean checkCollisions(Shot newShot) {
-        Rectangle shotBounds;
+    private boolean checkCollisions(Gunshot newGunshot) {
+        Rectangle gunshotBounds;
 
-        for (Shot shot : shots) {
-            shotBounds = shot.getBounds();
+        for (Gunshot gunshot : gunshots) {
+            gunshotBounds = gunshot.getBounds();
 
-            if (shotBounds.intersects(newShot.getBounds())) {
+            if (gunshotBounds.intersects(newGunshot.getBounds())) {
                 return true;
             }
         }
@@ -66,7 +69,7 @@ public class Player {
 
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE) {
-            simpleShot();
+            simpleGunshot();
         }
 
         if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_W) {
@@ -114,8 +117,8 @@ public class Player {
         return spaceshipImage;
     }
 
-    public List<Shot> getShots() {
-        return shots;
+    public List<Gunshot> getGunshots() {
+        return gunshots;
     }
 
     public int getHeight() {
@@ -128,5 +131,13 @@ public class Player {
 
     public int getSpeed() {
         return SPEED;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 }

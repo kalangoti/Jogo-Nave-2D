@@ -22,7 +22,7 @@ class PlayerTest {
         assertEquals(reference.getImage().getHeight(null), player.getHeight());
         assertEquals(100, player.getX());
         assertEquals(100, player.getY());
-        assertTrue(player.getShots().isEmpty());
+        assertTrue(player.getGunshots().isEmpty());
     }
 
     @Test
@@ -97,30 +97,69 @@ class PlayerTest {
     @DisplayName("With the key released, it should not move on the stage panel")
     void testPlayerWithKeyReleased() {
         player.keyReleased(KeyEvent.VK_UP);
-        player.update();
-
         player.keyReleased(KeyEvent.VK_W);
         player.update();
 
-        player.keyReleased(KeyEvent.VK_DOWN);
-        player.update();
+        assertEquals(100, player.getX());
+        assertEquals(100, player.getY());
 
+        player.keyReleased(KeyEvent.VK_DOWN);
         player.keyReleased(KeyEvent.VK_S);
         player.update();
 
-        player.keyReleased(KeyEvent.VK_LEFT);
-        player.update();
+        assertEquals(100, player.getX());
+        assertEquals(100, player.getY());
 
+        player.keyReleased(KeyEvent.VK_LEFT);
         player.keyReleased(KeyEvent.VK_A);
         player.update();
 
-        player.keyReleased(KeyEvent.VK_RIGHT);
-        player.update();
+        assertEquals(100, player.getX());
+        assertEquals(100, player.getY());
 
+        player.keyReleased(KeyEvent.VK_RIGHT);
         player.keyReleased(KeyEvent.VK_D);
         player.update();
 
         assertEquals(100, player.getX());
         assertEquals(100, player.getY());
+    }
+
+    @Test
+    @DisplayName("With check for gunshot collisions, it should not add new gunshot")
+    void testPlayerWithCheckCollisionsGunshot() {
+        player.keyPressed(KeyEvent.VK_SPACE);
+        player.getGunshots().get(0).update();
+
+        assertEquals(1, player.getGunshots().size());
+
+        player.keyPressed(KeyEvent.VK_SPACE);
+        player.getGunshots().get(0).update();
+
+        assertEquals(1, player.getGunshots().size());
+
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+        player.getGunshots().get(0).update();
+
+        player.keyPressed(KeyEvent.VK_SPACE);
+
+        assertEquals(2, player.getGunshots().size());
     }
 }

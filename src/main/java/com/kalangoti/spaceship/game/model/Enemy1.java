@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.Rectangle;
 
-public class Shot {
+public class Enemy1 {
     private Image image;
     private int x;
     private final int y;
@@ -13,9 +13,9 @@ public class Shot {
     private boolean visible;
 
     private int speed = 2;
-    private int maxWidth;
+    private int minWidth = 0;
 
-    public Shot(int x, int y) {
+    public Enemy1(int x, int y) {
         this.x = x;
         this.y = y;
         this.visible = true;
@@ -24,18 +24,18 @@ public class Shot {
     }
 
     private void load() {
-        ImageIcon reference = new ImageIcon("src\\main\\resources\\img\\simple-shot.png");
+        ImageIcon reference = new ImageIcon("src\\main\\resources\\img\\enemy1.png");
         image = reference.getImage();
 
         width = image.getWidth(null);
         height = image.getHeight(null);
 
-        maxWidth = Container.WIDTH - (width * 2);
+        minWidth -= width;
     }
 
     public void update() {
-        this.x += speed;
-        if (this.x >= maxWidth) {
+        this.x -= speed;
+        if (this.x <= minWidth) {
             setVisible(false);
         }
     }
