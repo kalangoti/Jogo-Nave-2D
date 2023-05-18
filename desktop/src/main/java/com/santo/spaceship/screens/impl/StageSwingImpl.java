@@ -10,13 +10,12 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 @Named
 public class StageSwingImpl extends JPanel implements Stage {
 
-    private static final String IMAGE_NAME = "img" + File.separator + "background.jpg";
+    private static final String IMAGE_NAME = "background.jpg";
 
     private transient Image gameBackground;
 
