@@ -10,6 +10,8 @@ public class GameConfig {
 
     public static final int HEIGHT = 728;
 
+    public static final int PLAYER_SPEED = 3;
+
     private GameConfig() {
         throw new IllegalStateException("Utility class");
     }

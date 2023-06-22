@@ -19,7 +19,7 @@ public class ContainerSwingImpl extends JFrame implements Container {
     @Override
     public void initialize() throws IOException {
         add(stage.initialize());
-        setTitle("Meu Jogo");
+        setTitle("Santo Spaceship Game");
         setSize(GameConfig.WIDTH, GameConfig.HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

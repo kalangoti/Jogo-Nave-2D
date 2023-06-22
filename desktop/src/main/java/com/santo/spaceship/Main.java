@@ -16,7 +16,6 @@ public class Main {
     private static final Container frame = spring.getBean(ContainerSwingImpl.class);
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
         try {
             frame.initialize();
             frame.showScreen();

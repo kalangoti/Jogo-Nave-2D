@@ -33,6 +33,7 @@ public class StageSwingImpl extends JPanel implements Stage {
     @Override
     public void paint(Graphics graph) {
         Graphics2D graph2D = (Graphics2D) graph;
+
         graph2D.drawImage(gameBackground, 0, 0, null);
 
         graph2D.dispose();
