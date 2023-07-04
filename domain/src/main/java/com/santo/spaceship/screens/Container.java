@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public interface Container {
 
-    void initialize() throws IOException;
+    void initialize(String title, int width, int height) throws IOException;
 
     void showScreen();
 

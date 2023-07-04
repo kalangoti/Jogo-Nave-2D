@@ -1,8 +1,4 @@
-package com.santo.spaceship.screens.impl;
-
-import com.santo.spaceship.configs.GameConfig;
-import com.santo.spaceship.screens.Container;
-import com.santo.spaceship.screens.Stage;
+package com.santo.spaceship.screens;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,10 +13,10 @@ public class ContainerSwingImpl extends JFrame implements Container {
     private Stage stage;
 
     @Override
-    public void initialize() throws IOException {
+    public void initialize(String title, int width, int height) throws IOException {
         add(stage.initialize());
-        setTitle("Santo Spaceship Game");
-        setSize(GameConfig.WIDTH, GameConfig.HEIGHT);
+        setTitle(title);
+        setSize(width, height);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -29,10 +25,13 @@ public class ContainerSwingImpl extends JFrame implements Container {
     @Override
     public void showScreen() {
         setVisible(true);
+        stage.showScreen();
     }
 
     @Override
     public void hideScreen() {
         setVisible(false);
+        stage.hideScreen();
     }
+
 }

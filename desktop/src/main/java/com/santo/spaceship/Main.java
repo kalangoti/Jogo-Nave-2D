@@ -1,8 +1,9 @@
 package com.santo.spaceship;
 
 import com.santo.spaceship.configs.Build;
+import com.santo.spaceship.configs.GameConfig;
 import com.santo.spaceship.screens.Container;
-import com.santo.spaceship.screens.impl.ContainerSwingImpl;
+import com.santo.spaceship.screens.ContainerSwingImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -17,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            frame.initialize();
+            frame.initialize("Santo Spaceship Game", GameConfig.WIDTH, GameConfig.HEIGHT);
             frame.showScreen();
         } catch (Exception exception) {
             showMessageDialog(null,

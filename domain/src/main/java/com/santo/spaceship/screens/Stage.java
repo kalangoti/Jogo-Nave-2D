@@ -7,4 +7,8 @@ public interface Stage {
 
     JComponent initialize() throws IOException;
 
+    void showScreen();
+
+    void hideScreen();
+
 }

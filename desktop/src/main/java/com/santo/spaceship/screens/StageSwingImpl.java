@@ -1,7 +1,6 @@
-package com.santo.spaceship.screens.impl;
+package com.santo.spaceship.screens;
 
 import com.santo.spaceship.configs.GameConfig;
-import com.santo.spaceship.screens.Stage;
 
 import javax.inject.Named;
 import javax.swing.ImageIcon;
@@ -42,5 +41,16 @@ public class StageSwingImpl extends JPanel implements Stage {
     protected Image getGameBackground() {
         return this.gameBackground;
     }
+
+    @Override
+    public void showScreen() {
+        setVisible(true);
+    }
+
+    @Override
+    public void hideScreen() {
+        setVisible(false);
+    }
+
 
 }

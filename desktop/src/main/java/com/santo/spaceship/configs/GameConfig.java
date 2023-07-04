@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class GameConfig {
 
-    public static final int WIDTH = 1024;
+    public static final int WIDTH = 1280;
 
-    public static final int HEIGHT = 728;
+    public static final int HEIGHT = 720;
 
     public static final int PLAYER_SPEED = 3;
 
