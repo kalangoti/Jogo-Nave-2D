@@ -3,6 +3,7 @@ package com.santo.spaceship.screens;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import java.io.IOException;
 
@@ -14,7 +15,8 @@ public class ContainerSwingImpl extends JFrame implements Container {
 
     @Override
     public void initialize(String title, int width, int height) throws IOException {
-        add(stage.initialize());
+        stage.initialize();
+        add((JPanel) stage.getComponent());
         setTitle(title);
         setSize(width, height);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

@@ -1,14 +1,15 @@
 package com.santo.spaceship.screens;
 
-import javax.swing.JComponent;
 import java.io.IOException;
 
-public interface Stage {
+public interface Stage<T> {
 
-    JComponent initialize() throws IOException;
+    void initialize() throws IOException;
 
     void showScreen();
 
     void hideScreen();
+
+    T getComponent();
 
 }
